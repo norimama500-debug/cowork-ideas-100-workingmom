@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ワーママのためのClaude活用アイデア100選</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink:    #f472b6;
+      --pink-l:  #fce7f3;
+      --coral:   #fb923c;
+      --coral-l: #fff7ed;
+      --mint:    #34d399;
+      --mint-l:  #d1fae5;
+      --sky:     #38bdf8;
+      --sky-l:   #e0f2fe;
+      --purple:  #a78bfa;
+      --purple-l:#ede9fe;
+      --yellow:  #fbbf24;
+      --yellow-l:#fef9c3;
+      --rose:    #fb7185;
+      --rose-l:  #ffe4e6;
+      --teal:    #2dd4bf;
+      --teal-l:  #ccfbf1;
+
+      --bg:      #fff8fb;
+      --card-bg: #ffffff;
+      --text:    #3b1f2b;
+      --sub:     #9b6e82;
+      --border:  #f3d5e7;
+      --shadow:  rgba(244,114,182,0.12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER / HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #fce7f3 0%, #fff0f6 40%, #fef3c7 100%);
+      padding: 64px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(244,114,182,.18) 0%, transparent 55%),
+        radial-gradient(circle at 85% 70%, rgba(251,146,60,.14) 0%, transparent 55%),
+        radial-gradient(circle at 50% 90%, rgba(52,211,153,.12) 0%, transparent 45%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #f472b6, #fb923c);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #db2777, #ea580c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: #9b6e82;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+    .hero-count {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-count-item {
+      text-align: center;
+    }
+    .hero-count-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #f472b6, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .hero-count-label {
+      font-size: .75rem;
+      color: #9b6e82;
+      margin-top: 2px;
+    }
+    .emoji-deco {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* ===== CONTROLS ===== */
+    .controls {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+    .search-wrap {
+      position: relative;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: #c084a2;
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      font-size: .95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .search-input::placeholder { color: #c084a2; }
+    .search-input:focus {
+      border-color: #f472b6;
+      box-shadow: 0 0 0 3px rgba(244,114,182,.15);
+    }
+
+    .filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .filter-btn {
+      padding: 6px 16px;
+      border: 2px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--sub);
+      cursor: pointer;
+      transition: all .18s;
+    }
+    .filter-btn:hover { border-color: #f472b6; color: #db2777; }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #f472b6, #fb923c);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(244,114,182,.35);
+    }
+
+    .result-count {
+      text-align: center;
+      font-size: .82rem;
+      color: #c084a2;
+      margin-bottom: 24px;
+    }
+
+    /* ===== GRID ===== */
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 64px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      padding: 20px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform .18s, box-shadow .18s, border-color .18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px var(--shadow);
+      border-color: #f9a8d4;
+    }
+    .card.copied { animation: pulse .4s ease; }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .card-num {
+      font-size: .72rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #f472b6, #fb923c);
+      border-radius: 6px;
+      min-width: 28px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .card-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .card-text {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-prompt {
+      font-size: .78rem;
+      color: var(--sub);
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 10px;
+      line-height: 1.5;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .copy-hint {
+      font-size: .72rem;
+      color: #d4a0bb;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .copy-hint svg { width: 13px; height: 13px; }
+
+    /* ===== TOAST ===== */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: linear-gradient(135deg, #f472b6, #fb923c);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(244,114,182,.4);
+      opacity: 0;
+      transition: transform .3s ease, opacity .3s ease;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: .78rem;
+      color: #c084a2;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ===== HIDDEN ===== */
+    .card.hidden { display: none; }
+
+    /* ===== CATEGORY COLOR TOKENS ===== */
+    /* Each category gets a color token applied via JS data-cat attribute */
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="emoji-deco">👩‍💼💕</span>
+  <div class="hero-badge">WORKING MOM × CLAUDE</div>
+  <h1>ワーママのための<br>Claude活用アイデア100選</h1>
+  <p class="hero-sub">仕事・育児・家事・自分時間…毎日忙しいワーママがClaudeを使ってもっとラクに・スマートに・自分らしく過ごすためのプロンプトアイデア集です。</p>
+  <div class="hero-count">
+    <div class="hero-count-item">
+      <div class="hero-count-num">100</div>
+      <div class="hero-count-label">個のアイデア</div>
+    </div>
+    <div class="hero-count-item">
+      <div class="hero-count-num">8</div>
+      <div class="hero-count-label">カテゴリ</div>
+    </div>
+    <div class="hero-count-item">
+      <div class="hero-count-num">∞</div>
+      <div class="hero-count-label">活用の可能性</div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input class="search-input" type="text" id="searchInput" placeholder="キーワードで絞り込む（例：献立、メール、時短…）" />
+  </div>
+  <div class="filter-wrap" id="filterWrap"></div>
+  <p class="result-count" id="resultCount"></p>
+</div>
+
+<!-- GRID -->
+<main class="grid" id="grid"></main>
+
+<!-- TOAST -->
+<div class="toast" id="toast">📋 コピーしました！</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>ワーママのための Claude 活用アイデア 100選 ✦ カードをクリックするとプロンプトをコピーできます</p>
+</footer>
+
+<script>
+// ===== DATA =====
+const categories = [
+  { id: "work",    label: "💼 仕事効率化",  color: "#6366f1", light: "#eef2ff" },
+  { id: "parenting",label: "👶 育児・子育て",color: "#f472b6", light: "#fce7f3" },
+  { id: "home",    label: "🏠 家事・家庭管理",color: "#34d399", light: "#d1fae5" },
+  { id: "time",    label: "⏰ 時間管理",    color: "#fb923c", light: "#fff7ed" },
+  { id: "career",  label: "🚀 キャリア",    color: "#a78bfa", light: "#ede9fe" },
+  { id: "health",  label: "💆 健康・メンタル",color: "#2dd4bf", light: "#ccfbf1" },
+  { id: "money",   label: "💰 お金・節約",  color: "#fbbf24", light: "#fef9c3" },
+  { id: "self",    label: "🌸 自己啓発・学び",color: "#fb7185", light: "#ffe4e6" },
+];
+
+const ideas = [
+  // 💼 仕事効率化 (1-13)
+  { id:1,  cat:"work", title:"今日のタスクを優先順位順に整理", prompt:"今日やるべきタスクを次のリストから優先度・緊急度で整理して、アイゼンハワーマトリクスに当てはめてください。タスク：[ここにタスクを書く]" },
+  { id:2,  cat:"work", title:"メールの返信文を自動生成", prompt:"以下のメールに対して、丁寧かつ簡潔な返信文を作成してください。要点だけを伝えて、150字以内を目安にしてください。メール内容：[ここに貼り付け]" },
+  { id:3,  cat:"work", title:"会議のアジェンダを作成", prompt:"[テーマ]についての30分の社内会議アジェンダを作成してください。参加者は[人数]名です。各項目に時間配分もつけてください。" },
+  { id:4,  cat:"work", title:"資料の要点を3点でまとめる", prompt:"以下の資料・テキストの要点を3つの箇条書きでまとめてください。専門用語は平易な言葉に言い換えてください。内容：[ここに貼り付け]" },
+  { id:5,  cat:"work", title:"週次報告書のテンプレートを作成", prompt:"毎週5分で書ける週次報告書テンプレートを作ってください。進捗・課題・来週の予定の3セクションを含め、全体で1ページ以内に収まる形式で。" },
+  { id:6,  cat:"work", title:"上司への報告メールを代筆", prompt:"上司に対して[状況・内容]をわかりやすく報告するメールを作成してください。結論→理由→次の対応 の順に簡潔にまとめてください。" },
+  { id:7,  cat:"work", title:"議事録を自動でまとめる", prompt:"以下の会議メモから、「決定事項」「ToDo（担当者・期限付き）」「次回議題」を整理した議事録を作成してください。メモ：[ここに貼り付け]" },
+  { id:8,  cat:"work", title:"断りメールを角が立たないように書く", prompt:"[依頼内容]を丁重にお断りするメール文を作ってください。相手との関係を大切にしながら、理由を明確に伝えてください。" },
+  { id:9,  cat:"work", title:"プレゼンの構成案を作る", prompt:"[テーマ]について[対象者・人数]向けに[時間]のプレゼンを行います。聞き手が行動を起こしたくなる構成案をスライドタイトル付きで提案してください。" },
+  { id:10, cat:"work", title:"業務マニュアルのテンプレートを作成", prompt:"[業務名]の手順書テンプレートを作ってください。新入社員でも迷わず作業できるよう、ステップ形式で注意点も含めてください。" },
+  { id:11, cat:"work", title:"テレワーク中の集中力を保つ作戦", prompt:"幼児がいる自宅でテレワークをしています。集中して仕事できる環境づくり・タイムスケジュールの工夫を具体的に提案してください。" },
+  { id:12, cat:"work", title:"クライアントへの提案書の骨子作成", prompt:"[クライアント名・業種]に[サービス名]を提案する資料の骨子を作ってください。課題→解決策→費用対効果→実績の流れで。" },
+  { id:13, cat:"work", title:"感謝・お礼のビジネスメールを作成", prompt:"[相手・お礼の内容]に対するお礼メールを作成してください。誠意が伝わりつつ、くどくならない文体でお願いします。" },
+
+  // 👶 育児・子育て (14-26)
+  { id:14, cat:"parenting", title:"子供の年齢別おすすめ絵本リスト", prompt:"[年齢]の子供に読み聞かせるのにぴったりな絵本を10冊リストアップしてください。各本の読み聞かせのポイントも一言添えてください。" },
+  { id:15, cat:"parenting", title:"子供が熱を出したときの対処法", prompt:"[年齢]の子が38.5度の熱を出しています。今夜、保育園・病院が休みの状況でできる適切な対処法を教えてください。明日受診すべきサインも。" },
+  { id:16, cat:"parenting", title:"読書感想文の書き方を子供に教える", prompt:"小学[学年]の子が『[本のタイトル]』の読書感想文を書く手助けをしてください。自分の言葉で書けるよう、質問形式で引き出すサポートをお願いします。" },
+  { id:17, cat:"parenting", title:"夏休みの自由研究アイデア10選", prompt:"小学[学年]の子供が家にある材料でできる自由研究テーマを10個提案してください。難易度・かかる時間・用意するものも一覧で。" },
+  { id:18, cat:"parenting", title:"子供をほめるときの言葉かけのコツ", prompt:"[年齢]の子供の自己肯定感を高める「ほめ方」のコツを教えてください。結果ではなくプロセスをほめる具体的なセリフ例も5パターン。" },
+  { id:19, cat:"parenting", title:"子供との会話が弾むネタ集", prompt:"[年齢]の子供と夕食中に話せる、楽しい会話ネタを10個教えてください。思考力が育ち、親子の絆も深まるテーマが理想です。" },
+  { id:20, cat:"parenting", title:"習い事選びのチェックリスト作成", prompt:"[年齢]の子供に習い事を始めさせたいと思っています。選ぶ際に確認すべきチェックリストと、各習い事のメリット・デメリット比較表を作ってください。" },
+  { id:21, cat:"parenting", title:"子供の癇癪への対処法", prompt:"[年齢]の子がスーパーで癇癪を起こします。その場でできる冷静な対応方法と、癇癪を減らすための日常的な工夫を教えてください。" },
+  { id:22, cat:"parenting", title:"連絡帳のポジティブな書き方", prompt:"保育園の連絡帳に、今日の子供のエピソード（[エピソード]）をほっこりする文章で書いてください。先生にも伝わる50字程度の文体で。" },
+  { id:23, cat:"parenting", title:"子供のお小遣い管理の仕組みを作る", prompt:"小学[学年]の子供にお小遣いを渡し始めます。金銭感覚が育つお小遣いルールと管理の仕組みを具体的に提案してください。" },
+  { id:24, cat:"parenting", title:"子供の友達トラブルの対処法", prompt:"子供が「○○ちゃんに仲間外れにされた」と言っています。[年齢]の子に適した、親として今夜できるサポートと声かけを教えてください。" },
+  { id:25, cat:"parenting", title:"子供に仕事を上手に説明する", prompt:"「ママはどんな仕事をしているの？」と子供に聞かれました。[職種]を[年齢]の子供でも理解できる言葉で説明するセリフを作ってください。" },
+  { id:26, cat:"parenting", title:"寝る前の読み聞かせをもっと楽しく", prompt:"[年齢]の子との寝る前の読み聞かせタイムをより楽しくする工夫（声の変え方・参加型の仕掛け・質問の仕方など）を具体的に教えてください。" },
+
+  // 🏠 家事・家庭管理 (27-39)
+  { id:27, cat:"home", title:"一週間の献立を栄養バランス良く作成", prompt:"仕事のある平日5日分の夕食献立を考えてください。調理時間は30分以内、子供（[年齢]）も食べられる、栄養バランスの良いメニューで。" },
+  { id:28, cat:"home", title:"冷蔵庫の残り物でレシピ提案", prompt:"冷蔵庫に[食材リスト]があります。今夜の夕食（子供あり）を20分以内で作れるレシピを2〜3品提案してください。" },
+  { id:29, cat:"home", title:"週末の作り置きレシピを計画", prompt:"日曜日に2時間で作れる作り置きおかずを5品提案してください。平日の弁当・夕食に使いまわせるバリエーション重視で。" },
+  { id:30, cat:"home", title:"家の掃除スケジュールを作る", prompt:"共働き夫婦＋子供[人数]人の家庭向けに、平日・週末の無理のない掃除スケジュールを作ってください。一人でやらず家族で分担する形式で。" },
+  { id:31, cat:"home", title:"季節の家事チェックリスト作成", prompt:"[季節]にやっておくべき家事・整理整頓のチェックリストを作ってください。保育園・学校関連の準備事項も含めてください。" },
+  { id:32, cat:"home", title:"食材の買い物リストを自動作成", prompt:"今週の献立（[献立]）に必要な買い物リストを、売り場ごとに整理して作成してください。重複食材はまとめて、週の使い回しも考慮して。" },
+  { id:33, cat:"home", title:"子供部屋の整理収納アイデア", prompt:"[年齢]の子供の部屋が散らかりがちです。子供が自分で片付けられるようになる収納レイアウト・収納グッズのアイデアを教えてください。" },
+  { id:34, cat:"home", title:"クローゼットをスッキリ整理する", prompt:"ワーママのクローゼット整理術を教えてください。仕事着・普段着・子供服を効率よく管理して、毎朝の服選びに悩まない仕組みを提案して。" },
+  { id:35, cat:"home", title:"家族の記念日・行事を一覧管理", prompt:"一年間の家族の誕生日・学校行事・記念日を管理するカレンダーテンプレートを作ってください。プレゼント準備や前日リマインダーも含む形式で。" },
+  { id:36, cat:"home", title:"保育園の持ち物チェックリスト", prompt:"[年齢]の子供の保育園（認可保育園）で必要な持ち物チェックリストを作ってください。入園時・毎日・季節ごとに分けた形式で。" },
+  { id:37, cat:"home", title:"夕食準備を15分短縮する工夫", prompt:"帰宅後の夕食準備時間を15分短縮するための、買い物・下ごしらえ・調理の工夫を具体的に教えてください。ワーママ目線で現実的な方法で。" },
+  { id:38, cat:"home", title:"家事分担を夫と話し合う準備", prompt:"夫と家事・育児の分担について話し合いたいです。角が立たず、建設的に話せる会話の流れと、現状を整理するためのシートを作ってください。" },
+  { id:39, cat:"home", title:"入学・進学準備リストを作成", prompt:"[学年]への入学・進学に向けて、今から準備すべきことリストを時系列で作ってください。購入品・手続き・説明会など全て含めて。" },
+
+  // ⏰ 時間管理 (40-51)
+  { id:40, cat:"time", title:"朝の支度を10分時短するルーティン", prompt:"子供[人数]人と大人[人数]人の朝の支度を、現在[時間]分かかっています。10分短縮するための準備・ルーティン改善アイデアを具体的に提案して。" },
+  { id:41, cat:"time", title:"ワーママの理想的な1日スケジュール", prompt:"6時起床・8時出勤・18時帰宅・22時就寝のワーママが、仕事・育児・家事・自分時間をバランスよくこなす1日のモデルスケジュールを作って。" },
+  { id:42, cat:"time", title:"隙間時間5分・15分・30分の活用法", prompt:"電車の中・昼休み・子供の昼寝中など、隙間時間を時間帯別（5分・15分・30分）に有効活用するためのアイデアリストを作ってください。" },
+  { id:43, cat:"time", title:"夜の家事を30分で終わらせる方法", prompt:"帰宅後の夕食・入浴・寝かしつけを含む夜の家事ルーティンを、30〜40分でこなすための最適な順番と時短術を教えてください。" },
+  { id:44, cat:"time", title:"「やめること」リストで時間を作る", prompt:"ワーママが毎日やっていることの中から「やめても良いこと・減らせること」を洗い出すワークを手伝ってください。私の一日：[ここに書く]" },
+  { id:45, cat:"time", title:"週末を最大限に活用するプランを立てる", prompt:"土日[利用できる時間]を、家族時間・自分時間・家事の準備に賢く使う週末プランを提案してください。子供の年齢は[年齢]です。" },
+  { id:46, cat:"time", title:"Googleカレンダーで家族を管理する方法", prompt:"夫婦の仕事・子供の学校行事・習い事をGoogleカレンダーで一元管理する設定方法と運用ルールを教えてください。" },
+  { id:47, cat:"time", title:"ランチタイムを自己投資時間にする", prompt:"1時間のランチタイムを、食事＋自己投資（スキルアップ・読書・副業）に充てるための具体的な過ごし方プランを提案してください。" },
+  { id:48, cat:"time", title:"子供の送迎中にできること", prompt:"保育園の送迎（往復30分・徒歩or自転車）の時間を有効活用するアイデアを教えてください。学びや気分転換になるものがいいです。" },
+  { id:49, cat:"time", title:"家族の予定を共有するアプリ活用法", prompt:"夫婦で子供の予定・家事当番・買い物リストを共有・管理するのに最適なアプリを比較して、使い方のコツも教えてください。" },
+  { id:50, cat:"time", title:"月に一度の家族会議の進め方", prompt:"月に一度、夫婦＋子供（[年齢]）で行う「家族会議」のアジェンダとルールを作ってください。全員が参加したくなる楽しい形式で。" },
+  { id:51, cat:"time", title:"仕事の「集中時間」を確保する戦略", prompt:"オープンなオフィス環境で、他の業務に邪魔されず集中して仕事できる時間ブロックを作るための戦略を教えてください。" },
+
+  // 🚀 キャリア (52-63)
+  { id:52, cat:"career", title:"育休復帰後のスムーズな復帰計画", prompt:"育休から[期間]後に職場復帰します。スムーズに復帰するための準備リストと、復帰後1ヶ月のスケジュール案を作ってください。" },
+  { id:53, cat:"career", title:"スキルアップのための学習計画を作る", prompt:"[目標スキル・資格]を[期間]で身につけたいです。ワーママでも無理なく続けられる週[時間]の学習計画を作ってください。" },
+  { id:54, cat:"career", title:"転職活動のロードマップを作成", prompt:"[現職種・年数]のワーママが[希望職種・条件]への転職を目指しています。育児と両立しながら転職活動を進める6ヶ月のロードマップを作って。" },
+  { id:55, cat:"career", title:"在宅勤務環境のチェックリスト", prompt:"子供がいる家庭で効果的にテレワークするための環境整備チェックリストを作ってください。機器・環境・ルール・子供対策を含めて。" },
+  { id:56, cat:"career", title:"副業・フリーランスへのロードマップ", prompt:"[現在のスキル]を活かして副業または将来的なフリーランス転身を目指したいワーママの、6ヶ月〜1年のロードマップを提案してください。" },
+  { id:57, cat:"career", title:"時短勤務でも成果を出すコツ", prompt:"時短勤務（[時間]時間/日）で働いています。限られた時間で最大の成果を出し、職場での評価も維持するための具体的な戦略を教えてください。" },
+  { id:58, cat:"career", title:"職場の上司に育児事情を伝えるメール", prompt:"急な子供の体調不良で[状況]を上司に伝える必要があります。仕事への影響を最小限に抑えながら、理解を得やすいメールを作ってください。" },
+  { id:59, cat:"career", title:"キャリアの棚卸し・自己分析シート", prompt:"[職歴・経験]のある私のキャリアを棚卸しする自己分析シートを作ってください。強み・やりがい・今後の方向性が見えてくる質問リストで。" },
+  { id:60, cat:"career", title:"仕事と育児の両立に悩む気持ちの整理", prompt:"仕事と育児のどちらにも全力を尽くせていない罪悪感を感じています。この気持ちを整理して、バランスの取れた考え方ができるよう一緒に考えて。" },
+  { id:61, cat:"career", title:"産後復帰後のモチベーションを高める", prompt:"産後復帰してから仕事へのモチベーションが戻りません。[状況・気持ち]を踏まえて、やる気を取り戻すための考え方と行動ステップを提案して。" },
+  { id:62, cat:"career", title:"社内での評価を上げる行動リスト", prompt:"時短勤務でもフルタイムと同等以上の評価を得るために、今週から実践できる具体的な行動リストを10個教えてください。" },
+  { id:63, cat:"career", title:"職務経歴書をブラッシュアップする", prompt:"以下の職務経歴書を、採用担当者の目を引く表現にブラッシュアップしてください。育児ブランクをポジティブに伝える文章も含めて。[ここに貼り付け]" },
+
+  // 💆 健康・メンタル (64-75)
+  { id:64, cat:"health", title:"ワーママのストレス解消法ベスト10", prompt:"フルタイムで働きながら育児中のワーママが日々のストレスを解消するための方法を10個教えてください。5分以内でできるものも含めて。" },
+  { id:65, cat:"health", title:"隙間時間にできるストレッチ集", prompt:"デスクワーク中・トイレの中・子供の寝かしつけ後などの隙間時間にできる、肩こり・腰痛・疲れ目に効くストレッチを教えてください。" },
+  { id:66, cat:"health", title:"睡眠の質を上げるための習慣", prompt:"育児で睡眠が取れないワーママが、短い睡眠でも疲れを残さないための就寝ルーティンと生活習慣の改善ポイントを教えてください。" },
+  { id:67, cat:"health", title:"育児疲れのセルフケア方法", prompt:"育児による慢性疲労・情緒不安定を感じています。自宅でできる心身のセルフケア方法を5つ、今夜からすぐできる具体的な形で提案してください。" },
+  { id:68, cat:"health", title:"子供のイライラをその場で和らげる方法", prompt:"帰宅後にすぐ子供がグズり、イライラしてしまいます。その場でできる気持ちのリセット方法と、グズりへの対応策を教えてください。" },
+  { id:69, cat:"health", title:"ワーママの朝のメンタルセットアップ", prompt:"慌ただしい朝でも気持ちよく1日をスタートできる、5〜10分でできるメンタルを整える朝のルーティンを提案してください。" },
+  { id:70, cat:"health", title:"食事制限なしで健康的に痩せる方法", prompt:"産後体重が戻らないワーママです。まとまった運動時間がなくても、日常生活の中で無理なく健康的に体型管理できる方法を教えてください。" },
+  { id:71, cat:"health", title:"マインドフルネスをワーママが実践する", prompt:"忙しいワーママでも実践できるマインドフルネスの方法を、日常のシーン別（通勤中・食器洗い中・子供のお風呂中など）に教えてください。" },
+  { id:72, cat:"health", title:"年に一度の健康診断を活用する", prompt:"健康診断の結果（[数値]）を踏まえて、注意すべき点と生活習慣の改善アドバイスをわかりやすく教えてください。" },
+  { id:73, cat:"health", title:"自分だけのリフレッシュ方法リストを作る", prompt:"私の好きなこと・得意なこと・やると元気になること：[ここに書く]。これを元に、日常生活に組み込めるリフレッシュ方法リストを作ってください。" },
+  { id:74, cat:"health", title:"パートナーへ気持ちを上手に伝える", prompt:"夫に「もっと家事・育児に参加してほしい」という気持ちを、攻撃的にならず伝えるI（アイ）メッセージの文章例を作ってください。" },
+  { id:75, cat:"health", title:"疲れが抜けないときの回復プランを作る", prompt:"週末の疲れが週明けに残っています。土日の休息と月曜の朝に向けた回復プランを、食事・睡眠・行動の面から具体的に提案してください。" },
+
+  // 💰 お金・節約 (76-87)
+  { id:76, cat:"money", title:"家計管理の仕組みを作る", prompt:"共働き夫婦（月収合計[金額]万円）の家計管理の仕組みを作ってください。固定費・変動費・貯蓄の配分と、毎月の管理方法を具体的に。" },
+  { id:77, cat:"money", title:"子供の教育費をシミュレーション", prompt:"[年齢]の子供の大学卒業までにかかる教育費の総額をシミュレーションして、今から月々いくら積み立てれば良いか試算してください。" },
+  { id:78, cat:"money", title:"NISAで子供の将来に備える方法", prompt:"NISAを使って子供の教育費・将来のために積み立てを始めたいです。初心者向けに、仕組みと始め方をわかりやすく教えてください。" },
+  { id:79, cat:"money", title:"食費を月1万円削減する節約術", prompt:"現在の食費（月[金額]円）を1万円削減したいです。食の質を落とさず、買い物・献立・調理の工夫で節約できる具体的な方法を教えて。" },
+  { id:80, cat:"money", title:"保険を見直すポイントを整理する", prompt:"現在加入している保険（[保険内容]）を見直したいです。ワーママ・共働き家庭に必要な保障と不要な保障をわかりやすく整理してください。" },
+  { id:81, cat:"money", title:"ふるさと納税のおすすめを教えて", prompt:"年収[金額]万円の共働き夫婦のふるさと納税の限度額の目安と、子供がいる家庭に特におすすめのカテゴリ・自治体を教えてください。" },
+  { id:82, cat:"money", title:"共働き世帯の税金対策を知りたい", prompt:"共働き夫婦が活用できる税金対策（医療費控除・配偶者控除・iDeCoなど）をわかりやすく整理して、今年度の確定申告に向けた準備方法を教えて。" },
+  { id:83, cat:"money", title:"子供の習い事費用を賢く節約", prompt:"子供[人数]人の習い事費用（現在月[金額]円）を節約する方法と、習い事の優先順位をつける考え方を教えてください。" },
+  { id:84, cat:"money", title:"家計の見直しポイントをリストアップ", prompt:"毎月の支出（[支出内訳]）を分析して、削減できる固定費・変動費と、その節約方法を具体的に提案してください。" },
+  { id:85, cat:"money", title:"老後のお金の準備を今から始める", prompt:"30代ワーママです。老後2000万円問題に備えて、今から始めるべき資産形成の方法（iDeCo・NISA・投資信託など）を初心者向けに教えて。" },
+  { id:86, cat:"money", title:"緊急予備費の目安と貯め方", prompt:"子供の急病・家電の故障など突発的な出費に備えた「緊急予備費」の目安金額と、無理なく貯める方法を教えてください。" },
+  { id:87, cat:"money", title:"お金の絵本・ゲームで子供に教える", prompt:"[年齢]の子供にお金の大切さ・使い方を楽しく教えるための絵本・ゲーム・家でできる体験を教えてください。" },
+
+  // 🌸 自己啓発・学び (88-100)
+  { id:88,  cat:"self", title:"今年挑戦したいことリストを一緒に作る", prompt:"私の好きなこと・やりたいこと・苦手なこと：[ここに書く]。これを踏まえて、今年の「やってみたいこと100リスト」の作り方と具体的なアイデアを提案して。" },
+  { id:89,  cat:"self", title:"ワーママにおすすめの本を10冊教えて", prompt:"ワーママの仕事効率化・育児・自己成長に役立つおすすめ本を10冊、読む順番の提案付きで教えてください。通勤中に読みやすい本も含めて。" },
+  { id:90,  cat:"self", title:"スキマ時間で学べるアプリを比較", prompt:"通勤・家事中などの隙間時間に学べるアプリ（語学・ビジネス・資格など）を比較して、ワーママにおすすめのものをランキングで教えてください。" },
+  { id:91,  cat:"self", title:"資格取得の勉強スケジュールを作成", prompt:"[資格名]を[試験日]までに取得したいです。1日[時間]の勉強時間しか取れないワーママでも合格できる逆算スケジュールを作ってください。" },
+  { id:92,  cat:"self", title:"ビジネス書の要点を3分でまとめる", prompt:"『[本のタイトル]』の内容を3分で読めるサマリーにまとめてください。ワーママが仕事・育児・生活にすぐ活かせるポイントを重視して。" },
+  { id:93,  cat:"self", title:"手帳の使い方を最適化する", prompt:"私の手帳の使い方（[現在の使い方]）を見直したいです。ワーママが仕事・家庭・自分時間のバランスを保ちながら使える手帳術を提案してください。" },
+  { id:94,  cat:"self", title:"習慣化したいことを継続できる仕組み", prompt:"[習慣化したいこと]を毎日継続するための仕組みを作ってください。忙しいワーママでも3日坊主にならないための工夫・記録方法・自分へのご褒美も。" },
+  { id:95,  cat:"self", title:"新しい趣味を見つけるためのリスト", prompt:"子育てが一段落してきた今、自分の趣味を見つけたいです。[好きなこと・得意なこと]を踏まえて、ワーママが楽しめる趣味候補を10個提案してください。" },
+  { id:96,  cat:"self", title:"夢ノートを書くためのテンプレート", prompt:"3年後・5年後の「なりたい自分・理想の生活」を言語化する夢ノートのテンプレートを作ってください。仕事・家族・自分の3つの軸で。" },
+  { id:97,  cat:"self", title:"家族旅行の計画を丸ごと立てる", prompt:"子供[年齢]人と行く[旅行先・日程]の家族旅行を計画してください。宿・移動・観光・食事・子供が喜ぶポイントを一括でまとめて。" },
+  { id:98,  cat:"self", title:"自分へのご褒美リストを作る", prompt:"日々頑張っているワーママの自分に、500円・2000円・1万円の予算別で「自分へのご褒美」リストを作ってください。すぐ実行できる具体的なもので。" },
+  { id:99,  cat:"self", title:"母の日・父の日のプレゼントを考える", prompt:"[贈る相手・年齢・予算]に合う母の日・父の日のプレゼントアイデアを5つ提案してください。子供と一緒に渡せる演出アイデアも添えて。" },
+  { id:100, cat:"self", title:"今の自分を認めて自己肯定感を上げる", prompt:"仕事も育児も完璧にできていないと感じています。今の自分を認め、自己肯定感を高めるための考え方と、毎日できる小さな習慣を教えてください。" },
+];
+
+// ===== CATEGORY MAP =====
+const catMap = {};
+categories.forEach(c => { catMap[c.id] = c; });
+
+// ===== RENDER FILTERS =====
+const filterWrap = document.getElementById('filterWrap');
+const allBtn = document.createElement('button');
+allBtn.className = 'filter-btn active';
+allBtn.textContent = '✨ すべて';
+allBtn.dataset.cat = 'all';
+filterWrap.appendChild(allBtn);
+
+categories.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn';
+  btn.textContent = c.label;
+  btn.dataset.cat = c.id;
+  filterWrap.appendChild(btn);
+});
+
+// ===== RENDER CARDS =====
+const grid = document.getElementById('grid');
+
+ideas.forEach(idea => {
+  const cat = catMap[idea.cat];
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.cat = idea.cat;
+  card.dataset.text = (idea.title + ' ' + idea.prompt).toLowerCase();
+  card.style.setProperty('--card-accent', cat.color);
+  card.style.setProperty('--card-light', cat.light);
+
+  // top accent bar
+  card.style.cssText += `--cat-color:${cat.color};`;
+
+  card.innerHTML = `
+    <style>.card[data-cat="${idea.cat}"]::before { background: ${cat.color}; }</style>
+    <div class="card-header">
+      <span class="card-num">${idea.id}</span>
+      <span class="card-tag" style="background:${cat.light};color:${cat.color};">${cat.label}</span>
+    </div>
+    <div class="card-text">${idea.title}</div>
+    <div class="card-prompt">${idea.prompt}</div>
+    <div class="card-footer">
+      <span class="copy-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        クリックしてコピー
+      </span>
+    </div>
+  `;
+
+  card.addEventListener('click', () => {
+    navigator.clipboard.writeText(idea.prompt).then(() => {
+      showToast();
+      card.classList.add('copied');
+      setTimeout(() => card.classList.remove('copied'), 400);
+    });
+  });
+
+  grid.appendChild(card);
+});
+
+// ===== FILTER LOGIC =====
+let currentCat = 'all';
+let currentQuery = '';
+
+function applyFilter() {
+  const cards = document.querySelectorAll('.card');
+  let count = 0;
+  cards.forEach(card => {
+    const catMatch = currentCat === 'all' || card.dataset.cat === currentCat;
+    const textMatch = !currentQuery || card.dataset.text.includes(currentQuery);
+    if (catMatch && textMatch) {
+      card.classList.remove('hidden');
+      count++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  document.getElementById('resultCount').textContent =
+    currentCat === 'all' && !currentQuery
+      ? `全 ${count} 個のアイデア`
+      : `${count} 個のアイデアが見つかりました`;
+}
+
+filterWrap.addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  currentCat = e.target.dataset.cat;
+  applyFilter();
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentQuery = e.target.value.trim().toLowerCase();
+  applyFilter();
+});
+
+// ===== TOAST =====
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast() {
+  clearTimeout(toastTimer);
+  toast.classList.add('show');
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ===== INIT =====
+applyFilter();
+</script>
+</body>
+</html>
